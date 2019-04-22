@@ -1,7 +1,7 @@
 NAME = fdf
 
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -O3
+FLAGS = -g#-Wall -Werror -Wextra -O3
 LIBRARIES = -lmlx -lm -lft -L$(LIBFT_DIRECTORY) -L$(MINILIBX_DIRECTORY) -framework OpenGL -framework AppKit
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
 
@@ -10,21 +10,21 @@ LIBFT_DIRECTORY = ./libft/
 LIBFT_HEADERS = $(LIBFT_DIRECTORY)includes/
 
 MINILIBX = $(MINILIBX_DIRECTORY)libmlx.a
-MINILIBX_DIRECTORY = ./minilibx/
+MINILIBX_DIRECTORY = ./mlx/
 MINILIBX_HEADERS = $(MINILIBX_DIRECTORY)
 
 HEADERS_LIST = fdf.h
 
-HEADERS_DIRECTORY = ./includes/
+HEADERS_DIRECTORY = ./inc/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./src/
-SOURCES_LIST =	fdf.c \
+SOURCES_LIST =	main.c \
 				map.c
 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
-OBJECTS_DIRECTORY = objects/
+OBJECTS_DIRECTORY = obj/
 OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_LIST))
 OBJECTS	= $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 
