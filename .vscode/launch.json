@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "/Users/marshtupa/fdf/fdf",
-            "args": ["maps/42.fdf"],
+            "args": ["maps/elem-fract.fdf"],
             "stopAtEntry": false,
             "cwd": "/Users/marshtupa/fdf",
             "environment": [],

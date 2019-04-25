@@ -4,6 +4,10 @@
 #include "../inc/keys.h"
 #include "../inc/interface.h"
 
+/*
+** TODO: Add: wasd jkl uio
+*/
+
 int			key_press(int key, void *param)
 {
 	t_fdf	*fdf;
@@ -27,7 +31,7 @@ int			key_press(int key, void *param)
 		|| key == NUM_PAD_9 || key == MAIN_PAD_9)
 		rotate(key, fdf);
 	else if (key == MAIN_PAD_LESS || key == MAIN_PAD_MORE)
-		divisor(key, fdf);
+		scale(key, fdf);
 	else if (key == MAIN_PAD_P || key == MAIN_PAD_I)
 		change_projection(key, fdf);
 	return (0);

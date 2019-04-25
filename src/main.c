@@ -3,6 +3,13 @@
 #include "../inc/interface.h"
 #include "../libft/includes/libft.h"
 
+/*
+** TODO:	rewrite mapsize();
+**			set menu;
+**			
+**       
+*/
+
 int			main(int ac, char **av)
 {
 	t_map	*map;

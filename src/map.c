@@ -56,11 +56,11 @@ static void		parse_data(char **coords, t_map *map)
 		map->points[i].x = i % map->width;
 		map->points[i].y = i / map->width;
 		map->points[i].z = ft_atoi(parts[0]);
-		map->points[i++].color = parts[1] ? ft_atoi_base(parts[1], 16) : -1;
 		if (map->points[i].z > map->z_max)
 			map->z_max = map->points[i].z;
 		if (map->points[i].z < map->z_min)
 			map->z_min = map->points[i].z;
+		map->points[i++].color = parts[1] ? ft_atoi_base(parts[1], 16) : -1;
 		free_words(&parts);
 	}
 }
@@ -87,8 +87,3 @@ int				read_map(const char *file, t_map *map)
 	close(fd);
 	return (result);
 }
-
-/*
-** TODO: 
-**       
-*/

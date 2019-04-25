@@ -48,16 +48,16 @@ void	rotate(int key, t_fdf *fdf)
 	print_map(fdf->map, fdf);
 }
 
-void	divisor(int key, t_fdf *fdf)
+void	scale(int key, t_fdf *fdf)
 {
 	if (key == MAIN_PAD_LESS)
-		fdf->camera->z_divisor -= 0.1;
+		fdf->camera->z_divisor /= 1.1;
 	else if (key == MAIN_PAD_MORE)
-		fdf->camera->z_divisor += 0.1;
+		fdf->camera->z_divisor *= 1.1;
 	if (fdf->camera->z_divisor < 0.1)
 		fdf->camera->z_divisor = 0.1;
-	else if (fdf->camera->z_divisor > 10)
-		fdf->camera->z_divisor = 10;
+	else if (fdf->camera->z_divisor > fdf->camera->zoom)
+		fdf->camera->z_divisor = fdf->camera->zoom;
 	print_map(fdf->map, fdf);
 }
 

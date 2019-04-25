@@ -18,7 +18,7 @@ int		close_win(void *param);
 void	zoom(int key, t_fdf *fdf);
 void	move(int key, t_fdf *fdf);
 void	rotate(int key, t_fdf *fdf);
-void	divisor(int key, t_fdf *fdf);
+void	scale(int key, t_fdf *fdf);
 void	change_projection(int key, t_fdf *fdf);
 
 #endif

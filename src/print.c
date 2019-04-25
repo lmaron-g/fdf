@@ -53,7 +53,7 @@ void		print_map(t_map *map, t_fdf *fdf)
 
 	i = 0;
 	setup_background(fdf);
-	while (i < map->width * map->height)
+	while (i < map->size)
 	{
 		if ((i + 1) % map->width != 0)
 			line(projection(map->points[i], fdf),
