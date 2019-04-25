@@ -1,10 +1,13 @@
+#include <fcntl.h>
 #include "../inc/fdf.h"
+#include "../inc/color.h"
+#include "../libft/includes/libft.h"
 
-size_t			map_size(const char *file, t_map *map)
+static size_t	map_size(const char *file, t_map *map)
 {
-	int		fd;
-	char	*str;
-	int		width;
+	int			fd;
+	char		*str;
+	int			width;
 
 	width = 0;
 	map->height = 0;
@@ -20,27 +23,24 @@ size_t			map_size(const char *file, t_map *map)
 		ft_strdel(&str);
 	}
 	close(fd);
-	return (sizeof(int) * (map->height * map->width));
+	map->size = map->height * map->width;
+	return (sizeof(t_point) * map->size);
 }
 
-t_map		*map_init(const char *file)
+t_map			*map_init(const char *file)
 {
-	t_map	*map;
-	size_t	size;
+	t_map		*map;
 
 	if (!(map = (t_map *)ft_memalloc(sizeof(t_map))))
 		print_error(ERR_MAP_INIT);
-	size = map_size(file, map);
-	if (!(map->coords = (int *)malloc(size)))
-		print_error(ERR_MAP_INIT);
-	if (!(map->colors = (int *)malloc(size)))
+	if (!(map->points = (t_point *)ft_memalloc(map_size(file, map))))
 		print_error(ERR_MAP_INIT);
 	map->z_min = MAX_INT;
 	map->z_max = MIN_INT;
 	return (map);
 }
 
-void			parse_data(char **coords, t_map *map)
+static void		parse_data(char **coords, t_map *map)
 {
 	static int	i = 0;
 	char		**parts;
@@ -53,18 +53,24 @@ void			parse_data(char **coords, t_map *map)
 			print_error(ERR_MAP_INVAL);
 		if (parts[1] && !ft_isnumber_base(parts[1], 16))
 			print_error(ERR_MAP_INVAL);
-		map->coords[i] = ft_atoi(parts[0]);
-		map->colors[i++] = parts[1] ? ft_atoi_base(parts[1], 16) : -1;
-	 	free_words(&parts);
+		map->points[i].x = i % map->width;
+		map->points[i].y = i / map->width;
+		map->points[i].z = ft_atoi(parts[0]);
+		map->points[i++].color = parts[1] ? ft_atoi_base(parts[1], 16) : -1;
+		if (map->points[i].z > map->z_max)
+			map->z_max = map->points[i].z;
+		if (map->points[i].z < map->z_min)
+			map->z_min = map->points[i].z;
+		free_words(&parts);
 	}
 }
 
-int			read_map(const char *file, t_map *map)
+int				read_map(const char *file, t_map *map)
 {
-	int		fd;
-	char	*line;
-	char	**coords;
-	int		result;
+	int			fd;
+	char		*line;
+	char		**coords;
+	int			result;
 
 	fd = open(file, O_RDONLY);
 	while ((result = get_next_line(fd, &line)) == 1)
@@ -75,14 +81,14 @@ int			read_map(const char *file, t_map *map)
 		free_words(&coords);
 		ft_strdel(&line);
 	}
-	if (!map->coords)
+	set_default_colors(map);
+	if (!map->points)
 		print_error(ERR_MAP_INVAL);
 	close(fd);
 	return (result);
 }
 
-
 /*
-** TODO: rewrite ft_strsplit for readind from GNL for 2d array,
-**       before it count rows - it will 2d array of t_point
+** TODO: 
+**       
 */

@@ -1,9 +1,11 @@
 #include "../inc/fdf.h"
-size_t			map_size(const char *file, t_map *map);
+#include "../mlx/mlx.h"
+#include "../libft/includes/libft.h"
 
 int			main(int ac, char **av)
 {
 	t_map	*map;
+	t_fdf	*fdf;
 
 	errno = 0;
 	if (ac == 2)
@@ -11,9 +13,12 @@ int			main(int ac, char **av)
 		map = map_init(av[1]);
 		if (read_map(av[1], map) == -1)
 			print_error(ERR_MAP_READ);
+		fdf = fdf_init(map);
+		fdf->camera = camera_init(fdf);
+		print_map(map, fdf);
+		// set_control(fdf);
+		mlx_loop(fdf->mlx);
 	}
-	else
-		print_error(ERR_USAGE);
+	print_error(ERR_USAGE);
 	return (0);
-
 }

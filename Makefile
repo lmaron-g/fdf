@@ -1,7 +1,7 @@
 NAME = fdf
 
 CC = gcc
-FLAGS = -g#-Wall -Werror -Wextra -O3
+FLAGS = -Wall -Werror -Wextra -O3 -g
 LIBRARIES = -lmlx -lm -lft -L$(LIBFT_DIRECTORY) -L$(MINILIBX_DIRECTORY) -framework OpenGL -framework AppKit
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
 
@@ -13,14 +13,22 @@ MINILIBX = $(MINILIBX_DIRECTORY)libmlx.a
 MINILIBX_DIRECTORY = ./mlx/
 MINILIBX_HEADERS = $(MINILIBX_DIRECTORY)
 
-HEADERS_LIST = fdf.h
+HEADERS_LIST =	fdf.h \
+				color.h \
+				interface.h
 
 HEADERS_DIRECTORY = ./inc/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./src/
 SOURCES_LIST =	main.c \
-				map.c
+				map.c \
+				fdf.c \
+				camera.c \
+				print.c \
+				projection.c \
+				color.c \
+				interface.c
 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
