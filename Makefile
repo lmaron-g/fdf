@@ -28,7 +28,9 @@ SOURCES_LIST =	main.c \
 				print.c \
 				projection.c \
 				color.c \
-				interface.c
+				interface.c \
+				controls.c \
+				control_operations.c
 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 

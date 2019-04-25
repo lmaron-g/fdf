@@ -1,5 +1,6 @@
 #include "../inc/fdf.h"
 #include "../mlx/mlx.h"
+#include "../inc/interface.h"
 #include "../libft/includes/libft.h"
 
 int			main(int ac, char **av)
@@ -16,7 +17,7 @@ int			main(int ac, char **av)
 		fdf = fdf_init(map);
 		fdf->camera = camera_init(fdf);
 		print_map(map, fdf);
-		// set_control(fdf);
+		setup_control(fdf);
 		mlx_loop(fdf->mlx);
 	}
 	print_error(ERR_USAGE);
