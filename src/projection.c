@@ -1,6 +1,6 @@
 #include "math.h"
-#include "../inc/fdf.h"
-#include "../inc/interface.h"
+#include "fdf.h"
+#include "interface.h"
 
 static void	rotate_x(int *y, int *z, double alpha)
 {
@@ -31,31 +31,35 @@ static void	rotate_z(int *x, int *y, double gamma)
 	*y = previous_x * sin(gamma) + previous_y * cos(gamma);
 }
 
-static void	iso(int *x, int *y, int z)
+/*
+** 2:1 isometric projection (26.57° angle = 0.46373398 rad)
+*/
+
+static void	iso(int *x, int *y, int z, t_fdf *fdf)
 {
 	int previous_x;
 	int previous_y;
 
 	previous_x = *x;
 	previous_y = *y;
-	*x = (previous_x - previous_y) * cos(0.523599);
-	*y = -z + (previous_x + previous_y) * sin(0.523599);
+	*x = (previous_x - previous_y) * cos(0.46373398);
+	*y = -z + (previous_x + previous_y) * sin(0.46373398);
 }
 
 t_point		projection(t_point point, t_fdf *fdf)
 {
 	point.x *= fdf->camera->zoom;
 	point.y *= fdf->camera->zoom;
-	point.z *= fdf->camera->zoom / fdf->camera->z_divisor;
+	point.z *= fdf->camera->zoom / fdf->camera->z_divider;
 	point.x -= (fdf->map->width * fdf->camera->zoom) / 2;
 	point.y -= (fdf->map->height * fdf->camera->zoom) / 2;
 	rotate_x(&point.y, &point.z, fdf->camera->alpha);
 	rotate_y(&point.x, &point.z, fdf->camera->beta);
 	rotate_z(&point.x, &point.y, fdf->camera->gamma);
 	if (fdf->camera->projection == ISO)
-		iso(&point.x, &point.y, point.z);
+		iso(&point.x, &point.y, point.z, fdf);
 	point.x += (WIDTH - MENU_WIDTH) / 2 + fdf->camera->x_offset + MENU_WIDTH;
-	point.y += (HEIGHT + fdf->map->height * fdf->camera->zoom) /
-													2 + fdf->camera->y_offset;
+	point.y += (HEIGHT + fdf->map->height * fdf->camera->zoom) / 2
+												+ fdf->camera->y_offset;
 	return (point);
 }

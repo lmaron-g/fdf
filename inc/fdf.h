@@ -1,12 +1,6 @@
 #ifndef FDF_H
 # define FDF_H
 
-#include "math.h"
-#include <fcntl.h>
-#include "../mlx/mlx.h"
-#include "../libft/includes/libft.h"
-
-
 # define ERR_USAGE			"Usage: ./fdf MAP_FILE"
 # define ERR_MAP_FILE		"Incorrect MAP_FILE"
 # define ERR_MAP_READ		"Error: reading MAP_FILE"
@@ -18,8 +12,10 @@
 
 typedef enum
 {
-	ISO,
-	PARALLEL
+	HORIZONTAL,
+	FRONT,
+	CROSS,
+	ISO
 }	t_projection;
 
 typedef struct			s_point
@@ -42,23 +38,23 @@ typedef struct			s_map
 
 typedef struct			s_mouse
 {
-	char				is_pressed;
 	int					x;
 	int					y;
 	int					previous_x;
 	int					previous_y;
+	char				is_pressed;
 }						t_mouse;
 
 typedef struct			s_camera
 {
-	t_projection		projection;
 	int					zoom;
 	double				alpha;
 	double				beta;
 	double				gamma;
-	float				z_divisor;
+	float				z_divider;
 	int					x_offset;
 	int					y_offset;
+	t_projection		projection;
 }						t_camera;
 
 typedef struct			s_fdf

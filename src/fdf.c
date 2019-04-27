@@ -1,7 +1,7 @@
-#include "../mlx/mlx.h"
-#include "../inc/fdf.h"
-#include "../inc/interface.h"
-#include "../libft/includes/libft.h"
+#include "mlx.h"
+#include "fdf.h"
+#include "interface.h"
+#include "libft.h"
 
 t_fdf		*fdf_init(t_map *map)
 {
@@ -11,7 +11,7 @@ t_fdf		*fdf_init(t_map *map)
 		print_error(ERR_FDF_INIT);
 	if (!(fdf->mlx = mlx_init()))
 		print_error(ERR_FDF_INIT);
-	if (!(fdf->win = mlx_new_window(fdf->mlx, WIDTH, HEIGHT, "21 FdF")))
+	if (!(fdf->win = mlx_new_window(fdf->mlx, WIDTH, HEIGHT, "FdF")))
 		print_error(ERR_FDF_INIT);
 	if (!(fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT)))
 		print_error(ERR_FDF_INIT);

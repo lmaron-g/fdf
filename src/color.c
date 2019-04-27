@@ -1,5 +1,5 @@
-#include "../inc/fdf.h"
-#include "../inc/color.h"
+#include "fdf.h"
+#include "color.h"
 
 static double	percentage(int start, int end, int current)
 {

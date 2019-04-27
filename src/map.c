@@ -1,7 +1,7 @@
 #include <fcntl.h>
-#include "../inc/fdf.h"
-#include "../inc/color.h"
-#include "../libft/includes/libft.h"
+#include "fdf.h"
+#include "color.h"
+#include "libft.h"
 
 static size_t	map_size(const char *file, t_map *map)
 {

@@ -1,14 +1,17 @@
 #ifndef INTERFACE_H
 # define INTERFACE_H
 
-# define WIDTH				1440
-# define HEIGHT				810
-# define MENU_WIDTH			250
+# define WIDTH		1440
+# define HEIGHT		810
+# define MENU_WIDTH	250
+# define FT_MIN(a, b) (((a) < (b)) ? (a) : (b))
+# define DEF_ZOOM(fdf)	FT_MIN((WIDTH - MENU_WIDTH) / fdf->map->width / 2, HEIGHT / fdf->map->height / 2)
 
 void	setup_menu(t_fdf *fdf);
 void	setup_background(t_fdf *fdf);
 
 void	setup_control(t_fdf *fdf);
+
 int		key_press(int key, void *param);
 int		mouse_press(int button, int x, int y, void *param);
 int		mouse_release(int button, int x, int y, void *param);

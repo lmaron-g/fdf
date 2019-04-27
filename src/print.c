@@ -1,8 +1,8 @@
-#include "../inc/fdf.h"
-#include "../mlx/mlx.h"
-#include "../inc/color.h"
-#include "../inc/interface.h"
-#include "../libft/includes/libft.h"
+#include "fdf.h"
+#include "mlx.h"
+#include "color.h"
+#include "interface.h"
+#include "libft.h"
 
 static void		plot(t_point point, int color, t_fdf *fdf)
 {
