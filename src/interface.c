@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   interface.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 18:20:09 by lmaron-g          #+#    #+#             */
+/*   Updated: 2019/05/20 18:20:11 by lmaron-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include "mlx.h"
 #include "fdf.h"
@@ -5,7 +17,7 @@
 #include "interface.h"
 #include "libft.h"
 
-void		setup_background(t_fdf *fdf)
+void	setup_background(t_fdf *fdf)
 {
 	int	*image;
 	int	i;

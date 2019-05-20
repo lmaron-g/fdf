@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   controls.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 18:19:21 by lmaron-g          #+#    #+#             */
+/*   Updated: 2019/05/20 18:19:23 by lmaron-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 #include "mlx.h"
 #include "keys.h"
@@ -77,7 +89,7 @@ int			mouse_move(int x, int y, void *param)
 	return (0);
 }
 
-int		close_win(void *param)
+int			close_win(void *param)
 {
 	(void)param;
 	exit(0);

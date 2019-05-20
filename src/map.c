@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 18:34:20 by lmaron-g          #+#    #+#             */
+/*   Updated: 2019/05/20 18:34:25 by lmaron-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fcntl.h>
 #include "fdf.h"
 #include "color.h"
@@ -12,9 +24,9 @@ static size_t	map_size(const char *file, t_map *map)
 	width = 0;
 	map->height = 0;
 	fd = open(file, O_RDONLY);
-	while(get_next_line(fd, &str))
+	while (get_next_line(fd, &str))
 	{
-		width = count_of_words(str, ' ');
+		width = count_words(str, ' ');
 		if (map->height == 0)
 			map->width = width;
 		else if (map->width != width)

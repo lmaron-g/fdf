@@ -2,6 +2,8 @@
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
         "libft.h": "c",
-        "color.h": "c"
+        "color.h": "c",
+        "stdarg.h": "c",
+        "stdio.h": "c"
     }
 }

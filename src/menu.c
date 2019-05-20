@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   menu.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 18:34:37 by lmaron-g          #+#    #+#             */
+/*   Updated: 2019/05/20 18:34:40 by lmaron-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mlx.h"
 #include "fdf.h"
 #include "color.h"
@@ -23,7 +35,7 @@ static void	controls_menu(t_fdf *fdf)
 	mlx_string_put(fdf->mlx, fdf->win, 15, 210, TEXT_COLOR, "Rotate:");
 	mlx_string_put(fdf->mlx, fdf->win, 105, 170, PINK_COLOR, " U   I   O ");
 	mlx_string_put(fdf->mlx, fdf->win, 105, 190, TEXT_COLOR, " +   +   + ");
-	mlx_string_put(fdf->mlx, fdf->win, 105, 210, PINK_COLOR, "[X] [Y] [Z]");	
+	mlx_string_put(fdf->mlx, fdf->win, 105, 210, PINK_COLOR, "[X] [Y] [Z]");
 	mlx_string_put(fdf->mlx, fdf->win, 105, 230, TEXT_COLOR, " -   -   - ");
 	mlx_string_put(fdf->mlx, fdf->win, 105, 255, PINK_COLOR, " J   K   L ");
 }
@@ -41,24 +53,30 @@ static void	projection_menu(t_fdf *fdf)
 	mlx_string_put(fdf->mlx, fdf->win, 155, 450, PINK_COLOR, "4");
 }
 
+static void	out(t_fdf *fdf, int x, int y, char *str)
+{
+	STR(x, y, PINK_COLOR, str);
+	ft_strdel(&str);
+}
+
 static void	info_menu(t_fdf *fdf)
 {
-	mlx_string_put(fdf->mlx, fdf->win, 15, 535, YELLOW_COLOR, "INFORMATION");
-	mlx_string_put(fdf->mlx, fdf->win, 15, 570, TEXT_COLOR, "Width:");
-	mlx_string_put(fdf->mlx, fdf->win, 155, 570, PINK_COLOR, ft_itoa(fdf->map->width));
-	mlx_string_put(fdf->mlx, fdf->win, 15, 600, TEXT_COLOR, "Height:");
-	mlx_string_put(fdf->mlx, fdf->win, 155, 600, PINK_COLOR, ft_itoa(fdf->map->height));
-	mlx_string_put(fdf->mlx, fdf->win, 15, 630, TEXT_COLOR, "Zoom:");
-	mlx_string_put(fdf->mlx, fdf->win, 155, 630, PINK_COLOR, ft_itoa(fdf->camera->zoom));
-	mlx_string_put(fdf->mlx, fdf->win, 15, 660, TEXT_COLOR, "Alfa:");
-	mlx_string_put(fdf->mlx, fdf->win, 155, 660, PINK_COLOR, ft_ftoa(fdf->camera->alpha, 3));
-	mlx_string_put(fdf->mlx, fdf->win, 15, 690, TEXT_COLOR, "Beta:");
-	mlx_string_put(fdf->mlx, fdf->win, 155, 690, PINK_COLOR, ft_ftoa(fdf->camera->beta, 3));
-	mlx_string_put(fdf->mlx, fdf->win, 15, 720, TEXT_COLOR, "Gamma:");
-	mlx_string_put(fdf->mlx, fdf->win, 155, 720, PINK_COLOR, ft_ftoa(fdf->camera->gamma, 3));
-	mlx_string_put(fdf->mlx, fdf->win, 15, 750, TEXT_COLOR, "Scale Z:");
-	mlx_string_put(fdf->mlx, fdf->win, 155, 750, PINK_COLOR, 
-									ft_ftoa(fdf->camera->zoom / fdf->camera->z_divider, 3));
+	STR(15, 535, YELLOW_COLOR, "INFORMATION");
+	STR(15, 570, TEXT_COLOR, "Width:");
+	out(fdf, 155, 570, ft_itoa(fdf->map->width));
+	STR(15, 600, TEXT_COLOR, "Height:");
+	out(fdf, 155, 600, ft_itoa(fdf->map->height));
+	STR(15, 630, TEXT_COLOR, "Zoom:");
+	out(fdf, 155, 630, ft_itoa(fdf->camera->zoom));
+	STR(15, 660, TEXT_COLOR, "Alfa:");
+	out(fdf, 155, 660, ft_ftoa(fdf->camera->alpha, 3));
+	STR(15, 690, TEXT_COLOR, "Beta:");
+	out(fdf, 155, 690, ft_ftoa(fdf->camera->beta, 3));
+	STR(15, 720, TEXT_COLOR, "Gamma:");
+	out(fdf, 155, 720, ft_ftoa(fdf->camera->gamma, 3));
+	STR(15, 750, TEXT_COLOR, "Scale Z:");
+	out(fdf, 155, 750,
+		ft_ftoa(fdf->camera->zoom / fdf->camera->z_divider, 3));
 }
 
 void		setup_menu(t_fdf *fdf)

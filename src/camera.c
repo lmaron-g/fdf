@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   camera.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 18:18:31 by lmaron-g          #+#    #+#             */
+/*   Updated: 2019/05/20 18:18:45 by lmaron-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 #include "interface.h"
 #include "libft.h"
 
-t_camera	*camera_init(t_fdf *fdf)
+t_camera		*camera_init(t_fdf *fdf)
 {
 	t_camera	*camera;
 

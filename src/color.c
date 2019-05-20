@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 18:18:59 by lmaron-g          #+#    #+#             */
+/*   Updated: 2019/05/20 18:19:02 by lmaron-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 #include "color.h"
 
@@ -21,7 +33,7 @@ int				get_color(t_point current, t_point a, t_point b, t_point delta)
 		percent = percentage(a.x, b.x, current.x);
 	else
 		percent = percentage(a.y, b.y, current.y);
-	return(MERGE_RGB(NEW_LIGHT(GET_RED(a.color), GET_RED(b.color), percent),
+	return (MERGE_RGB(NEW_LIGHT(GET_RED(a.color), GET_RED(b.color), percent),
 					NEW_LIGHT(GET_GREEN(a.color), GET_GREEN(b.color), percent),
 					NEW_LIGHT(GET_BLUE(a.color), GET_BLUE(b.color), percent)));
 }
@@ -38,9 +50,9 @@ void			set_default_colors(t_map *map)
 		{
 			percent = percentage(map->z_min, map->z_max, map->points[i].z);
 			map->points[i].color =
-				MERGE_RGB(NEW_LIGHT(GET_RED(LOW_COLOR), GET_RED(HIGH_COLOR), percent),
-						NEW_LIGHT(GET_GREEN(LOW_COLOR), GET_GREEN(HIGH_COLOR), percent),
-						NEW_LIGHT(GET_BLUE(LOW_COLOR), GET_BLUE(HIGH_COLOR), percent));
+		MERGE_RGB(NEW_LIGHT(GET_RED(LOW_COLOR), GET_RED(HIGH_COLOR), percent),
+			NEW_LIGHT(GET_GREEN(LOW_COLOR), GET_GREEN(HIGH_COLOR), percent),
+			NEW_LIGHT(GET_BLUE(LOW_COLOR), GET_BLUE(HIGH_COLOR), percent));
 		}
 		i++;
 	}
