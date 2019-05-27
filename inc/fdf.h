@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 19:26:34 by lmaron-g          #+#    #+#             */
+/*   Updated: 2019/05/20 19:26:35 by lmaron-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 # define FDF_H
 
@@ -73,14 +85,11 @@ typedef struct			s_fdf
 	t_mouse				*mouse;
 }						t_fdf;
 
-t_fdf		*fdf_init(t_map *map);
-t_map		*map_init(const char *file);
-t_camera	*camera_init(t_fdf *fdf);
-
-int			read_map(const char *file, t_map *map);
-
-void		print_map(t_map *map, t_fdf *fdf);
-
-t_point		projection(t_point point, t_fdf *fdf);
+t_fdf					*fdf_init(t_map *map);
+t_map					*map_init(const char *file);
+t_camera				*camera_init(t_fdf *fdf);
+int						read_map(const char *file, t_map *map);
+void					print_map(t_map *map, t_fdf *fdf);
+t_point					projection(t_point point, t_fdf *fdf);
 
 #endif

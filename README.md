@@ -1,6 +1,6 @@
 # FdF
 
-His project is about creating a simplified `3D graphic` representation of arelief landscape.
+This project is about creating a simplified `3D graphic` representation of arelief landscape.
 
 ![fdf: example map](/maps/img.png)
 

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmaron-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 18:34:48 by lmaron-g          #+#    #+#             */
+/*   Updated: 2019/05/20 18:34:52 by lmaron-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 #include "mlx.h"
 #include "color.h"
 #include "interface.h"
 #include "libft.h"
 
-static void		plot(t_point point, int color, t_fdf *fdf)
+static void	plot(t_point point, int color, t_fdf *fdf)
 {
 	int		i;
 
@@ -18,7 +30,7 @@ static void		plot(t_point point, int color, t_fdf *fdf)
 	}
 }
 
-static void		line(t_point a, t_point b, t_fdf *fdf)
+static void	line(t_point a, t_point b, t_fdf *fdf)
 {
 	t_point	delta;
 	t_point	sign;
@@ -37,7 +49,7 @@ static void		line(t_point a, t_point b, t_fdf *fdf)
 		if ((error[1] = error[0] * 2) > -delta.y)
 		{
 			error[0] -= delta.y;
-			current.x += sign.x; 
+			current.x += sign.x;
 		}
 		if (error[1] < delta.x)
 		{
