@@ -3,11 +3,6 @@
 #include "interface.h"
 #include "libft.h"
 
-/*
-** TODO:	rewrite mapsize();
-**			rewrite ftoa
-*/
-
 int			main(int ac, char **av)
 {
 	t_map	*map;

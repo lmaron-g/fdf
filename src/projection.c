@@ -34,8 +34,7 @@ static void	rotate_z(int *x, int *y, double gamma)
 /*
 ** 2:1 isometric projection (26.57° angle = 0.46373398 rad)
 */
-
-static void	iso(int *x, int *y, int z, t_fdf *fdf)
+static void	iso(int *x, int *y, int z)
 {
 	int previous_x;
 	int previous_y;
@@ -57,7 +56,7 @@ t_point		projection(t_point point, t_fdf *fdf)
 	rotate_y(&point.x, &point.z, fdf->camera->beta);
 	rotate_z(&point.x, &point.y, fdf->camera->gamma);
 	if (fdf->camera->projection == ISO)
-		iso(&point.x, &point.y, point.z, fdf);
+		iso(&point.x, &point.y, point.z);
 	point.x += (WIDTH - MENU_WIDTH) / 2 + fdf->camera->x_offset + MENU_WIDTH;
 	point.y += (HEIGHT + fdf->map->height * fdf->camera->zoom) / 2
 												+ fdf->camera->y_offset;

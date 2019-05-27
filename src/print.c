@@ -29,7 +29,7 @@ static void		line(t_point a, t_point b, t_fdf *fdf)
 	delta.y = FT_ABS(b.y - a.y);
 	sign.x = a.x < b.x ? 1 : -1;
 	sign.y = a.y < b.y ? 1 : -1;
-	error[0] = delta.x -delta.y;
+	error[0] = delta.x - delta.y;
 	current = a;
 	while (current.x != b.x || current.y != b.y)
 	{
@@ -66,7 +66,3 @@ void		print_map(t_map *map, t_fdf *fdf)
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
 	setup_menu(fdf);
 }
-
-/*
-** TODO: 
-*/
