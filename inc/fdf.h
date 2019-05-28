@@ -22,7 +22,7 @@
 # define ERR_SPLIT			"Error: split map"
 # define ERR_FDF_INIT		"Error: init fdf"
 
-#define STR(x, y, c, s) (mlx_string_put(fdf->mlx, fdf->win, x, y, c, s))
+# define STR(x, y, c, s) (mlx_string_put(fdf->mlx, fdf->win, x, y, c, s))
 
 typedef enum
 {

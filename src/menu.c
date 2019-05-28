@@ -16,7 +16,7 @@
 #include "interface.h"
 #include "libft.h"
 
-void	output(t_fdf *fdf, int x, int y, char **s)
+static void	output(t_fdf *fdf, int x, int y, char **s)
 {
 	STR(x, y, PINK_COLOR, *s);
 	ft_strdel(s);
@@ -41,7 +41,7 @@ static void	controls_menu(t_fdf *fdf)
 	STR(15, 210, TEXT_COLOR, "Rotate:");
 	STR(105, 170, PINK_COLOR, " U   I   O ");
 	STR(105, 190, TEXT_COLOR, " +   +   + ");
-	STR(105, 210, PINK_COLOR, "[X] [Y] [Z]");	
+	STR(105, 210, PINK_COLOR, "[X] [Y] [Z]");
 	STR(105, 230, TEXT_COLOR, " -   -   - ");
 	STR(105, 255, PINK_COLOR, " J   K   L ");
 }
